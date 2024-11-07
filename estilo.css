@@ -4,38 +4,64 @@
     font-family: 'Work Sans';
     margin: 0;
     padding: 0;
+
 }
+
 html{
     /* me permite deslizar cuando hago clic en los links del menu */
     scroll-behavior: smooth;
 }
+
+body, .contenedor-header, .contenido-seccion, .contenido-banner {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
 /* MENU */
-.contenedor-header{
+.contenedor-header {
     background: #1e2326;
-    position: fixed;
+    position: fixed; /* Mantiene el menú fijo en la parte superior */
+    max-width: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 1000; /* Asegúrate de que esté por encima de todo */
 }
-.contenedor-header header{
-    max-width: 1100px;
-    margin: auto;
+
+.contenedor-header + .contenido-seccion {
+    margin-top: 120px; /* Asegura que el contenido no quede debajo del menú */
+}
+
+.contenedor-header header {
+     /* Esto permite que ocupe todo el ancho disponible */
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
+    
 }
+
+.contenedor-img img {
+    max-width: 100%;
+    height: auto;
+}
+
 .contenedor-header header .logo a{
     font-family: 'Righteous';
     font-size: 36px;
     color: #1CB698;
     text-decoration: none;
 }
+
 .contenedor-header header ul{
     display: flex;
     list-style: none;
 }
+
 .contenedor-header header nav ul li a{
     text-align: none;
     color: #fff;
@@ -44,17 +70,24 @@ html{
     transition: .5s;
     text-decoration: none;
 }
+
 .contenedor-header header nav ul li a:hover{
     color: #1CB698;
 }
 .nav-responsive{
+    position: absolute;
     background-color: #1CB698;
     color:#fff;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     display: none;
+    right: 20px; /* Ajusta el valor según sea necesario */
+    top: 50%;
+    transform: translateY(-50%);
 }
+
+
 /* SECCION I N I C I O */
 .inicio{
     background: linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)),
@@ -65,6 +98,7 @@ html{
     display: flex;
     align-items: center;
 }
+
 .inicio .contenido-banner{
     padding: 20px;
     background-color: #1e2326;
@@ -79,7 +113,7 @@ html{
     margin-top: 40px;
     border: 10px solid #1CB698;
     display: block;
-    width: 80%;
+    width: 60%;
     margin: auto;
     border-radius: 100%;
 }
@@ -114,7 +148,7 @@ html{
     padding: 50px 20px;
 }
 .sobremi .contenido-seccion{
-    max-width: 1100px;
+    max-width: 80%;
     margin: auto;
 }
 .sobremi h2{
@@ -278,6 +312,14 @@ html{
     width: 0%;
     animation: 2s javascript forwards;
 }
+
+.url {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 0;
+  }  
+  
+  
 @keyframes javascript {
     0%{width: 0%;}
     100%{width: 75%;}
@@ -462,63 +504,7 @@ html{
     position: relative;
     bottom: 4px;
 }
-/* SECCION PORTFOLIO */
-.portfolio{
-    background-color: #252A2E;
-    color: #fff;
-    padding: 50px 20px;
-}
-.portfolio .contenido-seccion{
-    max-width: 1100px;
-    margin: auto;
-}
-.portfolio h2{
-    font-size: 48px;
-    font-family: 'Righteous';
-    text-align: center;
-    padding: 20px 0;
-}
-.portfolio .galeria{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.portfolio .galeria .proyecto{
-    position: relative;
-    max-width: 340px;
-    height: fit-content;
-    margin: 10px;
-    cursor: pointer;
-}
-.portfolio .galeria .proyecto img{
-    width: 100%;
-    display: block;
-}
-.portfolio .galeria .proyecto .overlay{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: linear-gradient(rgba(28,182,152,.8), rgba(28,182,152,.8));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: 1s;
-    font-size: 18px;
-    letter-spacing: 3px;
-    opacity: 0;
-}
-.portfolio .galeria .proyecto .overlay h3{
-    margin-bottom: 20px;
-    transition: 1s;
-}
-.portfolio .galeria .proyecto .overlay:hover{
-    opacity: 1;
-}
-.portfolio .galeria .proyecto .overlay:hover h3{
-    margin-bottom: 0px;
-}
+
 /* SECCION CONTACTO */
 .contacto{
     background-image: url(img/contact_bg.png);
@@ -582,6 +568,7 @@ html{
 }
 .contacto .col img{
     width: 100%;
+    height: 100%;
 }
 .contacto .col .info{
     position: absolute;
@@ -641,31 +628,86 @@ footer .arriba{
     line-height: 50px;
     font-size: 18px;
 }
+
+
+
 /* SECCION RESPONSIVE */
-@media screen and (max-width:980px){
-    nav{
+/* Para pantallas menores a 980px */
+/* Para pantallas menores a 980px */
+@media screen and (max-width: 980px) {
+    .contenedor-header header {
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    .contenedor-header header nav{
+        position: absolute;
+    }
+
+    .contenedor-header header .logo a {
+        font-size: 28px;
+    }
+
+    /* Ícono de hamburguesa visible solo en pantallas pequeñas */
+    .nav-responsive {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* Menú oculto por defecto en responsive */
+    nav#nav {
         display: none;
     }
-    .nav-responsive{
+
+    /* Cuando el menú es visible en responsive */
+    nav#nav.responsive {
         display: block;
+        position: fixed; /* Para que esté fijo en la pantalla */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; /* Ocupa toda la pantalla */
+        background-color: #343a40; /* Color de fondo oscuro */
+         /* Asegura que esté encima del contenido */
+        padding-top: 60px; /* Espacio en la parte superior */
     }
-    nav.responsive{
+
+    nav#nav.responsive ul {
         display: block;
-        position: absolute;
-        right: 0;
-        top: 75px;
-        background-color: #252A2E;
-        width: 180px;
+        width: 100%;
+        padding: 0;
     }
-    nav.responsive ul{
-        display: block !important;
-    }
-    nav.responsive ul li{
+
+    nav#nav.responsive ul li {
         border-bottom: 1px solid #fff;
         padding: 10px 0;
+        text-align: center;
     }
+
+    .contenedor-header header .nav-responsive i {
+        font-size: 30px;
+        color: #fff;
+    }
+
+    .col derecha .item.der {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    /* Ajustes adicionales para que el link de GitHub se vea mejor en móviles */
+
 }
+
+
+
 @media screen and (max-width:700px){
+    .inicio{
+        margin-top: 70px;
+    }
+
     .sobremi .fila{
         display: block;
     }
@@ -709,4 +751,24 @@ footer .arriba{
     .contacto .fila .col{
         width: 100%;
     }
+
+    .item.der {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Ajustes adicionales para que el link de GitHub se vea mejor en móviles */
+    .github {
+        font-size: 1rem;
+        margin-top: 8px;
+        text-align: left;
+    }
 }
+
+@media screen and (max-width:800px){
+    #contacto .contenido-seccion .fila .col{
+        margin-bottom: 220px;
+    }
+
+}    

@@ -1,14 +1,15 @@
 let menuVisible = false;
-//Función que oculta o muestra el menu
-function mostrarOcultarMenu(){
-    if(menuVisible){
-        document.getElementById("nav").classList ="";
-        menuVisible = false;
-    }else{
-        document.getElementById("nav").classList ="responsive";
-        menuVisible = true;
-    }
-}
+
+
+// Obtener el botón de navegación y el menú
+const navToggle = document.querySelector('.nav-responsive');
+const navMenu = document.querySelector('nav');
+
+// Agregar el evento de clic al botón
+navToggle.addEventListener('click', () => {
+    // Cambiar la clase 'responsive' para mostrar/ocultar el menú
+    navMenu.classList.toggle('responsive');
+});
 
 function seleccionar(){
     //oculto el menu una vez que selecciono una opcion
@@ -38,5 +39,6 @@ function efectoHabilidades(){
 window.onscroll = function(){
     efectoHabilidades();
 } 
+
 
 
