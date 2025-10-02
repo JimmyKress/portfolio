@@ -697,6 +697,14 @@ footer .arriba{
         
     }
 
+    .sobremi .fila .col .intereses{
+        margin-left: 65px;
+    }
+
+    .sobremi .fila .col .contenedor-intereses{
+        margin-left: 60px;
+    }
+
     /* Ajustes adicionales para que el link de GitHub se vea mejor en móviles */
 
 }
